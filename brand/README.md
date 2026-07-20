@@ -24,6 +24,25 @@
 | `codex-atlas-logo-primary.png` | Clean light lockup |
 | `codex-atlas-logo-dark.png` | Lockup on dark charcoal |
 
+## Website backgrounds
+
+| File | Use |
+|------|-----|
+| `codex-atlas-bg-texture.png` | Full atmospheric texture (topo + grain) |
+| `codex-atlas-bg-hero.png` | Wide hero / cover background |
+| `codex-atlas-bg-tile.png` | Subtle seamless tile for `background-repeat` |
+
+Example:
+
+```css
+body {
+  background-color: #0A0D10;
+  background-image: url("/brand/codex-atlas-bg-tile.png");
+  background-size: 512px;
+  background-repeat: repeat;
+}
+```
+
 ## Concept
 
 **Codex** — living knowledge, standards, craft that compounds.  
