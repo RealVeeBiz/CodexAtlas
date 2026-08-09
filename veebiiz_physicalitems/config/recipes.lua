@@ -1,8 +1,8 @@
 --[[
     VeeBiiz Physical Items — Object ↔ Object Interaction Recipes
 
-    Recipes describe how a carried/source object can interact with a target object.
-    The bartender example uses these; cooking/mechanics can register more at runtime.
+    Core ships with no domain recipes. Extensions register via:
+      exports.veebiiz_physicalitems:RegisterRecipe({ ... })
 ]]
 
 Config = Config or {}
@@ -17,87 +17,10 @@ Config.Recipes = Config.Recipes or {}
 ---@field targetItems string[]|nil
 ---@field targetCategories string[]|nil
 ---@field consumeSource number|nil  -- amount to reduce from source.state.amount
+---@field consumeCarry boolean|nil  -- clear carry session after a successful recipe use
 ---@field addToTarget table|nil     -- patch applied to target.state
 ---@field animation string|nil
 ---@field duration number|nil
-
-local function recipe(def)
-    Config.Recipes[#Config.Recipes + 1] = def
-end
-
-recipe({
-    id = 'pour_spirit_to_glass',
-    label = 'Pour',
-    interaction = 'pour',
-    sourceItems = { 'whisky', 'vodka', 'rum' },
-    sourceCategories = { 'drink' },
-    targetItems = { 'glass' },
-    targetCategories = { 'glassware' },
-    consumeSource = 40,
-    addToTarget = {
-        -- liquid is copied from source.state.liquid at runtime
-        amountDelta = 40,
-        setIce = false,
-    },
-    animation = 'pour',
-    duration = 2200,
-})
-
-recipe({
-    id = 'pour_mixer_to_glass',
-    label = 'Pour Mixer',
-    interaction = 'pour',
-    sourceItems = { 'coke', 'tonic' },
-    sourceCategories = { 'mixer' },
-    targetItems = { 'glass' },
-    targetCategories = { 'glassware' },
-    consumeSource = 60,
-    addToTarget = { amountDelta = 60 },
-    animation = 'pour',
-    duration = 1800,
-})
-
-recipe({
-    id = 'add_ice_to_glass',
-    label = 'Add Ice',
-    interaction = 'add_ice',
-    sourceItems = { 'ice' },
-    targetItems = { 'glass' },
-    targetCategories = { 'glassware' },
-    consumeSource = 1,
-    addToTarget = { ice = true },
-    animation = 'use',
-    duration = 1200,
-})
-
-recipe({
-    id = 'add_lemon_to_glass',
-    label = 'Add Garnish',
-    interaction = 'add_garnish',
-    sourceItems = { 'lemon' },
-    targetItems = { 'glass' },
-    targetCategories = { 'glassware' },
-    consumeSource = 1,
-    addToTarget = { garnish = 'lemon' },
-    animation = 'use',
-    duration = 1200,
-})
-
-recipe({
-    id = 'whisky_coke_mix',
-    label = 'Mix Whisky Coke',
-    interaction = 'mix',
-    sourceItems = { 'coke' },
-    targetItems = { 'glass' },
-    requireTargetState = { liquid = 'whisky' },
-    consumeSource = 80,
-    addToTarget = {
-        liquid = 'whisky_coke',
-        amountDelta = 80,
-    },
-    animation = 'pour',
-    duration = 2000,
-})
 
 --- Find matching recipes for a source/target pair
 ---@param sourceItem string

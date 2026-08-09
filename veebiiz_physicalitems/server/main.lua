@@ -86,6 +86,12 @@ end)
 
 exports('RegisterRecipe', function(recipe)
     Config.Recipes[#Config.Recipes + 1] = recipe
+    -- Clients use FindRecipes for interaction prompts — keep them in sync
+    TriggerClientEvent(VPI.Events.SYNC_RUNTIME, -1, {
+        items = VPI.Objects.GetRuntimeItems(),
+        interactions = VPI.Objects.GetRuntimeInteractions(),
+        recipes = Config.Recipes,
+    })
     return true
 end)
 

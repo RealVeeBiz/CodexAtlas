@@ -186,4 +186,22 @@ exports('GetCarrySession', function()
     return VPI.Carry.GetSession()
 end)
 
+--- Late-join / resync for items & interactions registered by extension resources
+RegisterNetEvent(VPI.Events.SYNC_RUNTIME, function(payload)
+    if type(payload) ~= 'table' then return end
+    if type(payload.items) == 'table' then
+        for name, def in pairs(payload.items) do
+            Config.Items[name] = def
+        end
+    end
+    if type(payload.interactions) == 'table' then
+        for name, def in pairs(payload.interactions) do
+            VPI.Interaction.Register(name, def)
+        end
+    end
+    if type(payload.recipes) == 'table' then
+        Config.Recipes = payload.recipes
+    end
+end)
+
 print('[veebiiz_physicalitems] Client main loaded.')
