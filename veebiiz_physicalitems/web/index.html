@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeeBiiz Physical Items</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <!-- Interaction prompt -->
+    <div id="prompt" class="prompt hidden" aria-live="polite">
+      <div class="prompt-glass">
+        <div class="prompt-header">
+          <div>
+            <h1 id="prompt-label">Item</h1>
+            <p id="prompt-category" class="prompt-category">Category</p>
+          </div>
+          <div id="prompt-meta" class="prompt-meta"></div>
+        </div>
+        <ul id="prompt-actions" class="prompt-actions"></ul>
+      </div>
+    </div>
+
+    <!-- Placement HUD -->
+    <div id="placement" class="placement hidden">
+      <div class="placement-glass">
+        <div id="placement-status" class="placement-status">Searching socket…</div>
+        <div id="placement-detail" class="placement-detail"></div>
+        <div class="placement-keys">
+          <span><kbd>ENTER</kbd> Place</span>
+          <span><kbd>BACKSPACE</kbd> Cancel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carry chip -->
+    <div id="carry" class="carry hidden">
+      <div class="carry-glass">
+        <span class="carry-dot"></span>
+        <span id="carry-label">Carrying</span>
+      </div>
+    </div>
+
+    <!-- Debug panel -->
+    <div id="debug" class="debug hidden">
+      <pre id="debug-body"></pre>
+    </div>
+
+    <!-- Zone Editor -->
+    <div id="editor" class="editor hidden">
+      <div class="editor-panel">
+        <header class="editor-header">
+          <div>
+            <p class="eyebrow">VeeBiiz</p>
+            <h2>Physical Zone Editor</h2>
+          </div>
+          <button type="button" class="btn ghost" id="editor-close">✕</button>
+        </header>
+
+        <div class="editor-body">
+          <aside class="editor-sidebar">
+            <label class="field">
+              <span>Zone</span>
+              <select id="editor-zone-select"></select>
+            </label>
+            <button type="button" class="btn secondary" id="editor-add-zone">+ New Zone</button>
+            <div class="socket-list-wrap">
+              <div class="socket-list-head">
+                <span>Sockets</span>
+                <button type="button" class="btn tiny" id="editor-add-socket">+ Add Socket</button>
+              </div>
+              <ul id="editor-socket-list" class="socket-list"></ul>
+            </div>
+          </aside>
+
+          <section class="editor-main">
+            <div id="editor-empty" class="editor-empty">Select or create a socket</div>
+            <form id="editor-form" class="editor-form hidden">
+              <label class="field"><span>Socket ID</span><input id="f-id" required /></label>
+              <label class="field"><span>Label</span><input id="f-label" /></label>
+              <div class="field-row">
+                <label class="field"><span>X</span><input id="f-x" type="number" step="0.001" /></label>
+                <label class="field"><span>Y</span><input id="f-y" type="number" step="0.001" /></label>
+                <label class="field"><span>Z</span><input id="f-z" type="number" step="0.001" /></label>
+              </div>
+              <div class="field-row">
+                <label class="field"><span>Rot X</span><input id="f-rx" type="number" step="0.1" /></label>
+                <label class="field"><span>Rot Y</span><input id="f-ry" type="number" step="0.1" /></label>
+                <label class="field"><span>Rot Z</span><input id="f-rz" type="number" step="0.1" /></label>
+              </div>
+              <label class="field"><span>Allowed Items (comma separated)</span><input id="f-items" placeholder="whisky, vodka, rum" /></label>
+              <label class="field"><span>Max Objects</span><input id="f-max" type="number" min="1" value="1" /></label>
+              <label class="field"><span>Ownership</span>
+                <select id="f-ownership">
+                  <option value="public">public</option>
+                  <option value="job">job</option>
+                  <option value="player">player</option>
+                  <option value="zone">zone</option>
+                </select>
+              </label>
+              <label class="field"><span>Job</span><input id="f-job" placeholder="bartender" /></label>
+              <label class="field"><span>Allowed Interactions</span><input id="f-interactions" placeholder="pickup, move, pour" /></label>
+              <div class="form-actions">
+                <button type="button" class="btn danger" id="editor-delete-socket">Delete Socket</button>
+                <button type="button" class="btn secondary" id="editor-use-coords">Use My Position</button>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <footer class="editor-footer">
+          <button type="button" class="btn ghost" id="editor-cancel">Cancel</button>
+          <button type="button" class="btn primary" id="editor-save">Save</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/components/icons.js"></script>
+  <script src="src/components/prompt.js"></script>
+  <script src="src/components/editor.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
