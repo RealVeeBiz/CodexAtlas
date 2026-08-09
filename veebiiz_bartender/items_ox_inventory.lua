@@ -1,8 +1,8 @@
 --[[
-    Deprecated path — use veebiiz_bartender/items_ox_inventory.lua
+    ox_inventory item definitions for veebiiz_bartender.
 
-    Kept as a thin re-export of the same definitions for older docs that
-    still point here. Prefer importing from the bartender resource directly.
+    Copy these into ox_inventory/data/items.lua (or your items pack).
+    Adjust weights / labels as needed for your server.
 ]]
 
 return {

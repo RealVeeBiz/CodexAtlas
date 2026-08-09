@@ -4,7 +4,7 @@
 
 A production-ready FiveM core framework for Qbox / ox_inventory that turns inventory items into real GTA V world props. Objects can be picked up, carried, placed into **predefined sockets**, moved, and interacted with — with custom NUI, object state, and MariaDB persistence.
 
-This is a **core framework**, not a bartender-only script. Bartending is provided as an extension example.
+This is a **core framework**, not a bartender-only script. Bartending is provided by the sibling extension resource [`veebiiz_bartender`](../veebiiz_bartender).
 
 ---
 
@@ -34,10 +34,11 @@ ensure ox_inventory
 ensure ox_target
 ensure qbx_core
 ensure veebiiz_physicalitems
+ensure veebiiz_bartender
 ```
 
-4. Import example items from `examples/bartender/items_ox_inventory.lua` into ox_inventory.
-5. Align `config/zones.lua` socket coordinates with your MLO.
+4. For a working bar, also install [`veebiiz_bartender`](../veebiiz_bartender) and import its `items_ox_inventory.lua`.
+5. Align bar socket coordinates in the bartender `config/zones.lua` (or use `/pieditor`).
 6. Grant ACE for the zone editor if needed:
 
 ```cfg
@@ -170,7 +171,7 @@ VeeBiiz Physical Items
 │   ├── ox_lib
 │   └── ox_target
 └── Extensions
-    ├── Bartender (example)
+    ├── veebiiz_bartender  (bar / pour / mix)
     ├── Cooking
     ├── Mechanics
     └── ...
@@ -188,7 +189,8 @@ See `fxmanifest.lua` for load order. Key folders:
 - `integrations/` — framework adapters
 - `web/` — custom interaction UI + zone editor
 - `sql/` — schema
-- `examples/bartender/` — drink workflow example
+- `../veebiiz_bartender/` — bartender / bar extension
+- `examples/bartender/` — pointer to the bartender resource
 
 ---
 

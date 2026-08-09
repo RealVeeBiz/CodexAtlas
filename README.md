@@ -1,7 +1,10 @@
 # VeeBiiz Physical Items
 
-FiveM resource: **`veebiiz_physicalitems`**
+FiveM resources:
 
-A generic physical item framework for Qbox + ox_inventory. Inventory items become persistent world props with socket placement, carry, custom NUI interactions, and MariaDB state.
+| Resource | Role |
+|----------|------|
+| [`veebiiz_physicalitems`](veebiiz_physicalitems) | Core framework — inventory items → persistent world props, sockets, carry, interactions |
+| [`veebiiz_bartender`](veebiiz_bartender) | Bar / bartender extension — bottles, glasses, pour, mix, garnish |
 
-See [`veebiiz_physicalitems/README.md`](veebiiz_physicalitems/README.md) for install, exports, and architecture.
+See each resource README for install, exports, and gameplay.

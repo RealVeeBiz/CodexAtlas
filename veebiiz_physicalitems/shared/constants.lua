@@ -45,5 +45,6 @@ VPI.Events = {
     CARRY_STOP = 'vpi:client:carryStop',
     NOTIFY = 'vpi:client:notify',
     SYNC_ZONES = 'vpi:client:syncZones',
+    SYNC_RUNTIME = 'vpi:client:syncRuntime',
     PLAY_INTERACTION = 'vpi:client:playInteraction',
 }

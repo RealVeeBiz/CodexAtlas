@@ -288,6 +288,14 @@ function VPI.Objects.RegisterItem(name, def)
     return true
 end
 
+function VPI.Objects.GetRuntimeItems()
+    return runtimeItems
+end
+
+function VPI.Objects.GetRuntimeInteractions()
+    return runtimeInteractions
+end
+
 function VPI.Objects.RegisterInteraction(name, def)
     def = def or {}
     def.name = name

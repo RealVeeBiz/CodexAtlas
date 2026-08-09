@@ -458,11 +458,12 @@ RegisterNetEvent(VPI.Events.INTERACT, function(payload)
         end
 
         local recipe = recipes[1]
-        if (session.state and session.state.amount or 0) < (recipe.consumeSource or 0) and recipe.consumeSource and recipe.consumeSource > 0 then
-            if session.item ~= 'ice' and session.item ~= 'lemon' then
-                notify(src, 'Not enough remaining.', 'error')
-                return
-            end
+        local consume = recipe.consumeSource or 0
+        local sourceAmount = session.state and session.state.amount or 0
+        -- Recipes with consumeCarry (e.g. ice/garnish) may omit amount tracking
+        if consume > 0 and not recipe.consumeCarry and sourceAmount < consume then
+            notify(src, 'Not enough remaining.', 'error')
+            return
         end
 
         local newSource, newTarget = VPI.Objects.ApplyRecipe(session.state, session.item, target, recipe)
@@ -477,8 +478,8 @@ RegisterNetEvent(VPI.Events.INTERACT, function(payload)
             sourceItem = session.item,
         })
 
-        -- Consumable ingredients: remove carry after use
-        if (session.item == 'ice' or session.item == 'lemon') and (recipe.consumeSource or 0) > 0 then
+        -- Consumable carried sources (ice, garnish, etc.): clear carry after use
+        if recipe.consumeCarry and consume > 0 then
             carrySessions[src] = nil
             TriggerClientEvent(VPI.Events.CARRY_STOP, src)
         end
@@ -492,6 +493,11 @@ RegisterNetEvent(VPI.Events.REQUEST_SYNC, function()
     local src = source
     TriggerClientEvent(VPI.Events.SYNC_OBJECTS, src, VPI.Objects.GetAllPublic())
     TriggerClientEvent(VPI.Events.SYNC_ZONES, src, Config.Zones)
+    TriggerClientEvent(VPI.Events.SYNC_RUNTIME, src, {
+        items = VPI.Objects.GetRuntimeItems(),
+        interactions = VPI.Objects.GetRuntimeInteractions(),
+        recipes = Config.Recipes,
+    })
     if carrySessions[src] then
         TriggerClientEvent(VPI.Events.CARRY_START, src, carrySessions[src])
     end
