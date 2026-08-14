@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pause Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="hidden" aria-hidden="true">
+    <div class="backdrop"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <div class="shell">
+      <aside class="rail">
+        <header class="brand">
+          <p class="brand-mark" id="server-name">SERVER</p>
+          <p class="brand-tag" id="server-tagline">Pause menu</p>
+        </header>
+
+        <nav class="nav" id="nav">
+          <button type="button" class="nav-btn is-active" data-tab="overview">
+            <span class="nav-icon" aria-hidden="true">◆</span>
+            Overview
+          </button>
+          <button type="button" class="nav-btn" data-tab="rules">
+            <span class="nav-icon" aria-hidden="true">☰</span>
+            Rules
+          </button>
+          <button type="button" class="nav-btn" data-tab="community">
+            <span class="nav-icon" aria-hidden="true">◎</span>
+            Community
+          </button>
+          <button type="button" class="nav-btn" data-action="map" id="btn-map">
+            <span class="nav-icon" aria-hidden="true">▣</span>
+            Map
+          </button>
+          <button type="button" class="nav-btn" data-action="settings" id="btn-settings">
+            <span class="nav-icon" aria-hidden="true">⚙</span>
+            Settings
+          </button>
+        </nav>
+
+        <div class="rail-actions">
+          <button type="button" class="btn primary" id="btn-resume">Resume</button>
+          <button type="button" class="btn danger" id="btn-disconnect">Disconnect</button>
+        </div>
+      </aside>
+
+      <main class="stage">
+        <section class="player-strip" id="player-strip">
+          <div class="player-identity">
+            <p class="eyebrow">Player</p>
+            <h1 id="player-name">—</h1>
+            <p class="player-meta">
+              <span>ID <strong id="player-id">—</strong></span>
+              <span class="dot">·</span>
+              <span>Ping <strong id="player-ping">—</strong>ms</span>
+            </p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="stat-label">Job</span>
+              <span class="stat-value" id="player-job">—</span>
+              <span class="stat-sub" id="player-job-grade"></span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Cash</span>
+              <span class="stat-value accent" id="player-cash">$0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Bank</span>
+              <span class="stat-value accent" id="player-bank">$0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Online</span>
+              <span class="stat-value" id="player-online">—</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panels">
+          <article class="panel is-active" data-panel="overview">
+            <header class="panel-head">
+              <h2>Session</h2>
+              <p>Live character snapshot while you are paused.</p>
+            </header>
+            <div class="overview-grid">
+              <div class="info-block">
+                <span class="info-label">Gang / Crew</span>
+                <span class="info-value" id="player-gang">None</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Playtime</span>
+                <span class="info-value" id="player-playtime">—</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">License</span>
+                <span class="info-value mono" id="player-license">—</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">Framework</span>
+                <span class="info-value mono" id="player-framework">—</span>
+              </div>
+            </div>
+            <p class="panel-note" id="footer-hint">ESC to resume</p>
+          </article>
+
+          <article class="panel" data-panel="rules">
+            <header class="panel-head">
+              <h2>Server Rules</h2>
+              <p>Read these. Breaking them ends sessions early.</p>
+            </header>
+            <ol class="rules-list" id="rules-list"></ol>
+          </article>
+
+          <article class="panel" data-panel="community">
+            <header class="panel-head">
+              <h2>Community</h2>
+              <p>Jump to Discord, site, store, and socials.</p>
+            </header>
+            <div class="links-grid" id="links-grid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <div id="confirm" class="confirm hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <div class="confirm-card">
+        <h3 id="confirm-title">Leave the server?</h3>
+        <p>You will be disconnected and returned to the FiveM server list.</p>
+        <div class="confirm-actions">
+          <button type="button" class="btn ghost" id="confirm-cancel">Stay</button>
+          <button type="button" class="btn danger" id="confirm-ok">Disconnect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
