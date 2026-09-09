@@ -161,7 +161,7 @@
     const isLast = state.index >= state.questions.length - 1;
     const nextBtn = document.getElementById('btn-next');
     nextBtn.textContent = isLast ? 'Soumettre' : 'Suivant';
-    nextBtn.disabled = state.answers[q.id] === undefined;
+    nextBtn.disabled = false;
   }
 
   function showResult(payload = {}) {
@@ -464,7 +464,11 @@
 
   document.getElementById('btn-next').addEventListener('click', () => {
     const q = state.questions[state.index];
-    if (!q || state.answers[q.id] === undefined) return;
+    if (!q) return;
+    if (state.answers[q.id] === undefined) {
+      showToast('Choisissez une réponse pour continuer.', 'error');
+      return;
+    }
     if (state.index >= state.questions.length - 1) {
       post('submitTest', { answers: state.answers });
       return;
