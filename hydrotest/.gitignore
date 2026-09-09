@@ -1,0 +1,6 @@
+node_modules/
+.env
+data/results.json
+data/sessions.json
+npm-debug.log*
+data/results.json

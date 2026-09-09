@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydro-Québec — Administration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="page">
+  <div class="backdrop"></div>
+  <div class="grid-glow" aria-hidden="true"></div>
+
+  <main class="shell shell-wide" id="shell">
+    <section id="view-login" class="view">
+      <header class="hero">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <h1>Hydro-Québec</h1>
+        </div>
+        <p class="hero-sub">Administration</p>
+        <p class="hero-lead">Connectez-vous pour gérer la banque de questions.</p>
+      </header>
+      <form id="login-form" class="welcome-form" autocomplete="off">
+        <label for="admin-password">Mot de passe</label>
+        <input id="admin-password" type="password" required placeholder="••••••••" />
+        <button type="submit" class="btn primary wide">Connexion</button>
+      </form>
+      <p class="footer-hint"><a href="/">Retour au test</a></p>
+    </section>
+
+    <section id="view-admin" class="view hidden">
+      <header class="admin-top">
+        <div>
+          <p class="eyebrow">Administration</p>
+          <h2>Questions</h2>
+          <p class="admin-sub">Édition de la banque de questions</p>
+        </div>
+        <div class="admin-top-actions">
+          <button type="button" class="btn primary" id="btn-new-question">Nouvelle question</button>
+          <a class="btn ghost" href="/">Test</a>
+          <button type="button" class="btn ghost" id="btn-logout">Déconnexion</button>
+        </div>
+      </header>
+
+      <div class="admin-layout">
+        <aside class="question-list" id="question-list"></aside>
+        <form id="question-form" class="question-editor hidden">
+          <input type="hidden" id="edit-id" />
+          <div class="field-row">
+            <div class="field">
+              <label for="edit-category">Catégorie</label>
+              <input id="edit-category" type="text" maxlength="40" placeholder="Sécurité, Batterie…" />
+            </div>
+            <label class="check">
+              <input id="edit-active" type="checkbox" checked />
+              Active
+            </label>
+          </div>
+          <div class="field">
+            <label for="edit-question">Question</label>
+            <textarea id="edit-question" rows="3" maxlength="400" required></textarea>
+          </div>
+          <div class="field">
+            <label>Réponses <span class="muted">(cochez la bonne)</span></label>
+            <div id="edit-answers" class="edit-answers"></div>
+            <button type="button" class="btn ghost small" id="btn-add-answer">+ Ajouter une réponse</button>
+          </div>
+          <div class="editor-actions">
+            <button type="button" class="btn danger" id="btn-delete-question">Supprimer</button>
+            <button type="submit" class="btn primary">Enregistrer</button>
+          </div>
+        </form>
+        <div id="admin-empty" class="admin-empty">
+          <p>Sélectionnez une question ou créez-en une nouvelle.</p>
+        </div>
+      </div>
+
+      <section class="results-panel">
+        <header class="panel-head-inline">
+          <h3>Derniers résultats</h3>
+          <button type="button" class="btn ghost small" id="btn-refresh-results">Actualiser</button>
+        </header>
+        <div id="results-list" class="results-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/admin.js"></script>
+</body>
+</html>
