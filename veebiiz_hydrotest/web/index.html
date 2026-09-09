@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydro-Québec — Test de compétence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="hidden" aria-hidden="true">
+    <div class="backdrop"></div>
+    <div class="grid-glow" aria-hidden="true"></div>
+
+    <div class="shell">
+      <!-- WELCOME -->
+      <section id="view-welcome" class="view hidden">
+        <header class="hero">
+          <div class="brand-lockup">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <h1 id="welcome-title">Hydro-Québec</h1>
+          </div>
+          <p id="welcome-subtitle" class="hero-sub">Test de compétence</p>
+          <p class="hero-lead">Identifiez-vous pour démarrer une série de questions tirées au hasard.</p>
+        </header>
+
+        <form id="welcome-form" class="welcome-form" autocomplete="off">
+          <label for="candidate-name">Nom du candidat</label>
+          <input id="candidate-name" name="name" type="text" maxlength="64" placeholder="Prénom Nom" required />
+          <div class="meta-row">
+            <span><strong id="meta-count">8</strong> questions</span>
+            <span>Seuil <strong id="meta-pass">70</strong>%</span>
+          </div>
+          <button type="submit" class="btn primary wide">Commencer le test</button>
+        </form>
+        <p class="footer-hint" id="welcome-hint">ESC pour fermer</p>
+      </section>
+
+      <!-- TEST -->
+      <section id="view-test" class="view hidden">
+        <header class="test-top">
+          <div>
+            <p class="eyebrow" id="test-brand">Hydro-Québec</p>
+            <h2 id="test-candidate">Candidat</h2>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><span id="progress-fill"></span></div>
+            <p class="progress-label"><span id="progress-current">1</span> / <span id="progress-total">8</span></p>
+          </div>
+        </header>
+
+        <article class="question-card">
+          <p class="category" id="q-category">Sécurité</p>
+          <h3 id="q-text">Question</h3>
+          <div id="q-answers" class="answers" role="listbox"></div>
+        </article>
+
+        <footer class="test-actions">
+          <button type="button" class="btn ghost" id="btn-prev" disabled>Précédent</button>
+          <button type="button" class="btn primary" id="btn-next">Suivant</button>
+        </footer>
+      </section>
+
+      <!-- RESULT -->
+      <section id="view-result" class="view hidden">
+        <div class="result-panel" id="result-panel">
+          <p class="eyebrow" id="result-brand">Résultat</p>
+          <h2 id="result-title">—</h2>
+          <p class="result-score"><span id="result-percent">0</span>%</p>
+          <p class="result-detail"><span id="result-correct">0</span> / <span id="result-total">0</span> bonnes réponses</p>
+          <p class="result-msg" id="result-msg"></p>
+          <div class="result-actions">
+            <button type="button" class="btn primary" id="btn-retry">Recommencer</button>
+            <button type="button" class="btn ghost" id="btn-close-result">Fermer</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN -->
+      <section id="view-admin" class="view hidden">
+        <header class="admin-top">
+          <div>
+            <p class="eyebrow">Administration</p>
+            <h2 id="admin-title">Questions</h2>
+            <p class="admin-sub" id="admin-subtitle">Édition de la banque de questions</p>
+          </div>
+          <div class="admin-top-actions">
+            <button type="button" class="btn primary" id="btn-new-question">Nouvelle question</button>
+            <button type="button" class="btn ghost" id="btn-close-admin">Fermer</button>
+          </div>
+        </header>
+
+        <div class="admin-layout">
+          <aside class="question-list" id="question-list"></aside>
+          <form id="question-form" class="question-editor hidden">
+            <input type="hidden" id="edit-id" />
+            <div class="field-row">
+              <div class="field">
+                <label for="edit-category">Catégorie</label>
+                <input id="edit-category" type="text" maxlength="40" placeholder="Sécurité, Batterie…" />
+              </div>
+              <label class="check">
+                <input id="edit-active" type="checkbox" checked />
+                Active
+              </label>
+            </div>
+            <div class="field">
+              <label for="edit-question">Question</label>
+              <textarea id="edit-question" rows="3" maxlength="400" required></textarea>
+            </div>
+            <div class="field">
+              <label>Réponses <span class="muted">(cochez la bonne)</span></label>
+              <div id="edit-answers" class="edit-answers"></div>
+              <button type="button" class="btn ghost small" id="btn-add-answer">+ Ajouter une réponse</button>
+            </div>
+            <div class="editor-actions">
+              <button type="button" class="btn danger" id="btn-delete-question">Supprimer</button>
+              <button type="submit" class="btn primary">Enregistrer</button>
+            </div>
+          </form>
+          <div id="admin-empty" class="admin-empty">
+            <p>Sélectionnez une question ou créez-en une nouvelle.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
