@@ -1,0 +1,158 @@
+[
+  {
+    "id": "q1",
+    "category": "Sécurité",
+    "question": "Avant d'intervenir près d'une ligne électrique aérienne, que devez-vous faire en premier?",
+    "answers": [
+      "Vérifier la distance d'approche sécuritaire et l'état du matériel",
+      "Toucher le câble pour tester s'il est sous tension",
+      "Couper l'arbre le plus proche sans balisage",
+      "Travailler seul pour aller plus vite"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q2",
+    "category": "Sécurité",
+    "question": "Que signifie l'acronyme EPI dans le contexte Hydro-Québec?",
+    "answers": [
+      "Équipement de protection individuelle",
+      "Énergie de production industrielle",
+      "Évaluation périodique interne",
+      "Éclairage public intégré"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q3",
+    "category": "Électricité",
+    "question": "Quelle est la première action en cas de contact avec un câble sous tension?",
+    "answers": [
+      "S'éloigner en sautant à pieds joints si possible et appeler les secours",
+      "Tirer immédiatement la victime avec les mains nues",
+      "Arroser la zone avec de l'eau",
+      "Continuer le travail pour terminer la tâche"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q4",
+    "category": "Batterie",
+    "question": "Lors du manutentionnement d'une batterie de secours (UPS / poste), quel risque principal devez-vous prévenir?",
+    "answers": [
+      "Court-circuit, déversement d'électrolyte et gaz explosifs",
+      "Surpression d'eau uniquement",
+      "Rayonnement ultraviolet",
+      "Congélation immédiate du boîtier"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q5",
+    "category": "Batterie",
+    "question": "Avant de brancher ou de remplacer une batterie de système de contrôle, vous devez:",
+    "answers": [
+      "Isoler l'alimentation, porter les EPI et respecter la polarité",
+      "Brancher à chaud sans vérification",
+      "Mélanger des batteries de tensions différentes",
+      "Court-circuiter les bornes pour tester la charge"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q6",
+    "category": "Batterie",
+    "question": "Quel signe indique qu'une batterie plomb-acide peut être dangereuse?",
+    "answers": [
+      "Gonflement, odeur d'acide, fuite ou chaleur anormale",
+      "Un voyant vert stable uniquement",
+      "Une température ambiante de 20 °C",
+      "Un numéro de série pair"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q7",
+    "category": "Réseau",
+    "question": "Pourquoi baliser une zone de travail autour d'un transformateur?",
+    "answers": [
+      "Protéger le public et les collègues des risques électriques et de chute",
+      "Améliorer l'esthétique du chantier",
+      "Remplacer les procédures de consignation",
+      "Éviter d'utiliser des EPI"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q8",
+    "category": "Consignation",
+    "question": "La consignation électrique a pour but de:",
+    "answers": [
+      "Mettre hors tension et verrouiller l'énergie avant l'intervention",
+      "Augmenter la tension pour accélérer le test",
+      "Remplacer le permis de travail",
+      "Autoriser le travail sous tension sans EPI"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q9",
+    "category": "Urgence",
+    "question": "Vous découvrez un fil tombé au sol après une tempête. Que faire?",
+    "answers": [
+      "Rester à distance, sécuriser la zone et aviser Hydro-Québec / le superviseur",
+      "Le ramasser et le remettre sur le poteau",
+      "Couper le fil avec une scie",
+      "Ignorer et continuer la patrouille"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q10",
+    "category": "Environnement",
+    "question": "En cas de déversement d'huile de transformateur, la priorité est de:",
+    "answers": [
+      "Contenir le déversement, signaler et suivre la procédure environnementale",
+      "Laisser s'évaporer sans rapport",
+      "Arroser abondamment vers les égouts",
+      "Mélanger avec du carburant"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q11",
+    "category": "Communication",
+    "question": "Avant de démarrer une manœuvre sur le réseau, vous devez:",
+    "answers": [
+      "Confirmer les consignes avec le centre de contrôle / superviseur",
+      "Agir seul sans radio",
+      "Désactiver toutes les communications",
+      "Improviser selon l'intuition"
+    ],
+    "correct": 0,
+    "active": true
+  },
+  {
+    "id": "q12",
+    "category": "Batterie",
+    "question": "Où stocker idéalement des batteries de rechange sur un site?",
+    "answers": [
+      "Dans un local ventilé, sec, à l'abri des sources d'ignition",
+      "Près d'un radiateur ouvert",
+      "Dans un local fermé sans ventilation",
+      "À l'extérieur sans protection"
+    ],
+    "correct": 0,
+    "active": true
+  }
+]
